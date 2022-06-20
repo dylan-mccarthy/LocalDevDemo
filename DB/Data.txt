@@ -1,0 +1,4 @@
+Id,Name,Type,DistanceFromSolarSystem
+1,M32 Andromeda,Spiral,752
+2,LMC Large Magellanic Cloud,Magellanic Spiral,50
+3,M33 Triangulum,Spiral,970

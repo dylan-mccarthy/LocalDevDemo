@@ -1,0 +1,42 @@
+﻿@page "/galaxies"
+
+<PageTitle>Galaxies</PageTitle>
+@using NightSkyApp.Data
+@inject GalaxyService GalaxyService
+
+<h1>Galaxies</h1>
+
+@if(galaxies == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Distance from Solar System (kpc)</th>
+             </tr>
+             </thead>
+             <tbody>
+            @foreach(var galaxy in galaxies)
+            {
+                <tr>
+                    <td>@galaxy.Name</td>
+                    <td>@galaxy.Type</td>
+                    <td>@galaxy.DistanceFromSolarSystem.ToString()</td>
+                </tr>
+            }
+        </tbody>
+     </table>
+}
+@code {
+    private List<Galaxy>? galaxies;
+
+    protected override async Task OnInitializedAsync()
+    {
+        galaxies = await GalaxyService.GetGalaxiesAsync();
+    }
+}

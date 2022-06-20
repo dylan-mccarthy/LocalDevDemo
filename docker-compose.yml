@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  planetapi:
+    image: ${DOCKER_REGISTRY-}planetapi
+    hostname: planetapi
+    build:
+      context: .
+      dockerfile: PlanetAPI/Dockerfile
+    env_file:
+     - .env.dev
+     
+  galaxyapi:
+    image: ${DOCKER_REGISTRY-}galaxyapi
+    hostname: galaxyapi
+    build:
+      context: .
+      dockerfile: GalaxyAPI/Dockerfile
+    env_file:
+    - .env.dev
+    
+  sqlserver:
+    image: ${DOCKER_REGISTRY-}dbserver
+    ports:
+        - 1433:1433
+    hostname: dbserver
+    build:
+        context: .
+        dockerfile: DB/Dockerfile
+    env_file:
+    - .env.dev
+  nightskyapp:
+    image: ${DOCKER_REGISTRY-}nightskyapp
+    build:
+      context: .
+      dockerfile: NightSkyApp/Dockerfile
+

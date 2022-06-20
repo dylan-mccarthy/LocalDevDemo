@@ -1,0 +1,43 @@
+﻿@page "/planets"
+
+<PageTitle>Planets Data</PageTitle>
+@using NightSkyApp.Data
+@inject PlanetService PlanetService
+
+<h1>Planets</h1>
+
+@if(planets == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Distance from Sun (MKm)</th>
+             </tr>
+             </thead>
+             <tbody>
+            @foreach(var planet in planets)
+            {
+                <tr>
+                    <td>@planet.Name</td>
+                    <td>@planet.HasLife.ToString()</td>
+                    <td>@planet.DistanceFromSun.ToString()</td>
+                </tr>
+            }
+        </tbody>
+     </table>
+}
+
+@code {
+    private List<Planet>? planets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        planets = await PlanetService.GetPlanetsAsync();
+    }
+}
