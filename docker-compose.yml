@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.8'
 
 services:
   planetapi:
@@ -19,19 +19,27 @@ services:
     env_file:
     - .env.dev
     
-  sqlserver:
-    image: ${DOCKER_REGISTRY-}dbserver
+  db:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
     ports:
-        - 1433:1433
-    hostname: dbserver
-    build:
-        context: .
-        dockerfile: DB/Dockerfile
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+      - ./DB/init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file:
-    - .env.dev
+      - .env.dev
+
   nightskyapp:
     image: ${DOCKER_REGISTRY-}nightskyapp
     build:
       context: .
       dockerfile: NightSkyApp/Dockerfile
 
+volumes:
+  db:
+    driver: local
