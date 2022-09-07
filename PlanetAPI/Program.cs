@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PlanetDbContext>(options =>
 {
-options.UseMySQL(Configuration["DB:PlanetConnection"]);
+options.UseMySQL(Configuration["DB_PlanetConnection"]);
 });
 
 var app = builder.Build();

@@ -7,12 +7,6 @@ services:
     build:
       context: .
       dockerfile: PlanetAPI/Dockerfile
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-    ports:
-      - "80"
-      - "443"
     env_file:
      - .env.dev
      
@@ -22,17 +16,12 @@ services:
     build:
       context: .
       dockerfile: GalaxyAPI/Dockerfile
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-    ports:
-      - "80"
-      - "443"
     env_file:
     - .env.dev
     
   db:
     image: mysql:8.0
+    hostname: dbServer
     cap_add:
       - SYS_NICE
     restart: always
@@ -51,12 +40,6 @@ services:
     build:
       context: .
       dockerfile: NightSkyApp/Dockerfile
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-    ports:
-      - "80"
-      - "443"
 
 volumes:
   db:
