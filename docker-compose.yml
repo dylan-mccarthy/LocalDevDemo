@@ -26,7 +26,7 @@ services:
       - SYS_NICE
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=MYSQLPASS2022!
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
     ports:
       - '3306:3306'
     volumes:
