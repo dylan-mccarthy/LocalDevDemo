@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<GalaxyDbContext>(options =>
 {
-options.UseSqlServer(Configuration["DB:GalaxyConnection"]);
+options.UseMySQL(Configuration["DB_GalaxyConnection"]);
 });
 
 var app = builder.Build();

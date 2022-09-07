@@ -15,7 +15,6 @@ builder.Services.AddHttpClient("PlanetsClient", httpClient =>
 {
     httpClient.BaseAddress = new Uri(Configuration["PlanetsAPI:BaseUrl"]);
 });
-builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<GalaxyService>();
 builder.Services.AddSingleton<PlanetService>();
 
