@@ -5,33 +5,27 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=devSecure!
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     ports:
       - "80"
       - "443"
     volumes:
-      - ~/.aspnet/https:/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
   galaxyapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=devSecure!
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     ports:
       - "80"
       - "443"
     volumes:
-      - ~/.aspnet/https:/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
   nightskyapp:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=devSecure!
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     ports:
       - "80"
       - "443"
     volumes:
-      - ~/.aspnet/https:/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
