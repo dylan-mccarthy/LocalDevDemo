@@ -21,6 +21,7 @@ services:
     
   db:
     image: mysql:8.0
+    hostname: dbServer
     cap_add:
       - SYS_NICE
     restart: always

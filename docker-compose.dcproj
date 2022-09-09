@@ -15,4 +15,7 @@
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include=".env.dev" />
+  </ItemGroup>
 </Project>
