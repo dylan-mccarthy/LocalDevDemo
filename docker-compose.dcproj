@@ -17,5 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".env.dev" />
+    <Content Include="docker-compose.override.mac.yml" />
   </ItemGroup>
 </Project>
